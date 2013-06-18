@@ -8,7 +8,7 @@ Installation
 1. Copy the CircularColorPicker.h and .m to your project
 2. Make sure that you have defined macros for calculating degreesToRadians. In the demo I included it in the .pch file.
 
-#define degreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
+   #define degreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
 
 3. Import the header of CircularColorPicker to your project
 
