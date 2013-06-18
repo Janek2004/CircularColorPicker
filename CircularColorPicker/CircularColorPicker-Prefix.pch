@@ -3,6 +3,11 @@
 //
 
 #import <Availability.h>
+/** Degrees to radians **/
+#define degreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
+
+/** Radians to Degrees **/
+#define radiansToDegrees( radians ) ( ( radians ) * ( 180.0 / M_PI ) )
 
 #ifndef __IPHONE_4_0
 #warning "This project uses features only available in iOS SDK 4.0 and later."

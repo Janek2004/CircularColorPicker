@@ -7,9 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "CircularPicker.h"
 
-@interface ViewController ()
-
+@interface ViewController (){
+CircularPicker * cp;
+NSTimer * timer;
+}
 @end
 
 @implementation ViewController
@@ -18,7 +21,32 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    cp = [[CircularPicker alloc] initWithFrame:self.view.bounds andCompletionHandler:^(UIColor * color){
+        @try {
+            NSLog(@"Color is %@",color);
+            [UIView animateWithDuration:0.5 animations:^{
+                self.view.backgroundColor = color;
+            }];
+        }
+        @catch (NSException *exception) {
+            NSLog(@" Exception %@",[exception debugDescription]);
+        }
+        @finally {
+
+        }
+    }];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:1/30.f target:self selector:@selector(rotate:) userInfo:nil repeats:YES];
+    [self.view addSubview:cp];
 }
+
+-(void)rotate:(id)timer{
+    CGAffineTransformRotate(cp.transform, 1);
+    cp.transform =  CGAffineTransformRotate(cp.transform, degreesToRadians(1));
+}
+
+          
+          
 
 - (void)didReceiveMemoryWarning
 {
